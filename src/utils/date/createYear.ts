@@ -1,5 +1,5 @@
-import { createDate } from "utils/date/createDate";
-import { createMonth } from "./createMonth";
+import { createDate } from 'utils/date/createDate';
+import { createMonth } from './createMonth';
 
 interface ICreateYearParams {
   locale?: string;
@@ -9,7 +9,7 @@ interface ICreateYearParams {
 }
 
 export const createYear = (params?: ICreateYearParams) => {
-  const locale = params?.locale ?? "default";
+  const locale = params?.locale ?? 'default';
 
   const monthCount = 12;
   const currentDay = createDate();
@@ -20,10 +20,7 @@ export const createYear = (params?: ICreateYearParams) => {
   const month = createMonth({ date: new Date(year, monthNumber - 1), locale });
 
   const getMonthDays = (monthIndex: number) =>
-    createMonth({ date: new Date(year, monthIndex), locale }).getDaysInMonth(
-      monthIndex,
-      year
-    );
+    createMonth({ date: new Date(year, monthIndex), locale }).getDaysInMonth();
   const monthsInYear = Array(monthCount)
     .fill(0)
     .map((_, i) => getMonthDays(i));
@@ -31,6 +28,6 @@ export const createYear = (params?: ICreateYearParams) => {
   return {
     monthsInYear,
     month,
-    year,
+    year
   };
 };

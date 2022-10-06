@@ -13,5 +13,10 @@ export const getWeekDaysNames = (locale: string = 'default') => {
       locale,
       date: new Date(date.getFullYear(), date.getMonth(), date.getDate() + i)
     });
+    weekDaysNames[dayNumberInWeek - 1] = { day, dayShort };
   });
+
+  const lastDay = weekDaysNames[0];
+  const otherDays = weekDaysNames.slice(1);
+  return [...otherDays, lastDay];
 };
