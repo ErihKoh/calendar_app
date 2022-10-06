@@ -8,7 +8,7 @@ interface ICalendarProps {
 
 const Calendar: React.FC<ICalendarProps> = ({ locale = 'default', selectDate, selectedDate }) => {
   const { state } = useCalendar({ locale, selectedDate });
-  console.log(state);
+
   return <div>Calendar</div>;
 };
 
