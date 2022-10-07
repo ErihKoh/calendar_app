@@ -53,9 +53,9 @@ export const useCalendar = ({ locale = 'default', selectedDate: date }: IUseCale
 
     const numberOfNextDays = lastDay.dayNumberInWeek - 1 < 6 ? 7 - lastDay.dayNumberInWeek : 0;
 
-    const visiblePrevDays = prevMonthDays.slice(-numberOfPrevDays);
+    const visiblePrevDays = prevMonthDays.slice(-(numberOfPrevDays - 1));
 
-    const visibleNextDay = nextMonthDays.slice(0, numberOfNextDays);
+    const visibleNextDay = nextMonthDays.slice(0, numberOfNextDays + 1);
 
     return [...visiblePrevDays, ...days, ...visibleNextDay];
   }, [selectedDate.monthIndex, selectedYear]);
@@ -70,6 +70,9 @@ export const useCalendar = ({ locale = 'default', selectedDate: date }: IUseCale
       selectedMonth,
       selectedYear,
       selectedYearInterval
+    },
+    functions: {
+      setMode
     }
   };
 };
